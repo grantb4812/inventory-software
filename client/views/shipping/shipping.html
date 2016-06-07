@@ -1,0 +1,38 @@
+
+<div class="text-center order">
+    <input type="text" ng-model="order.orderNumber" placeholder="Search Order#"/>
+    <button ng-click="getOrder(order); showNew=false" ng-model="showNew">Search</button>
+</div>
+    <table class="table order">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Order Number</th>
+            <th>Status</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Ship To</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="order in ordergroup">
+        <td>{{$index + 1}}</td>
+        <td>{{order.orderNumber}}</td>
+        <td>{{order.status}}</td>
+        <td>{{order.partNumber}}</td>
+        <td>{{order.description}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.shipTo}}<br>
+            <div ng-show="showTrack">Tracking# = {{order.tracking}}</div>
+            <input ng-show="showOrder" type="text" ng-model="editO.tracking" placeholder="Enter Tracking"/></td>
+        <td>{{order.createdAt}}<br>
+            <button ng-show="showOrder" ng-click="showOrder=false" ng-model="showEdit" class="btn btn-default">Cancel</button>
+            <button ng-model="showOrder" ng-show="showOrder" ng-click="editOrder(editO, ordergroup[$index]._id); showOrder=false" class="btn btn-default">Save</button>
+            <button ng-show="showTrack" ng-click="showTrack=false" class="btn btn-default">Close</button>
+        </td>
+        <td class="btn btn-default" ng-click="showOrder=true" ng-model='showOrder' ng-hide="order.tracking">Ship</td>
+        <td class="btn btn-default" ng-click="showTrack=true" ng-model='showTrack' ng-show="order.tracking">Track</td>
+    </tr>
+</table>
+<div>{{alert}}</div>

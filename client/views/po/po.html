@@ -1,0 +1,45 @@
+<!--generate a PO#, generate timestamp, generates status(incoming), input -- part# , description, qty -->
+<!-- creat po view, search po view, edit po view-->
+
+<div class="text-center search-po">
+    <input type="text" ng-model="po.poNumber" placeholder="Search PO#"/>
+    <button ng-click="getPo(po, loggeduser._id); showCreate=false" ng-model="showCreate">Search</button>
+    <button ng-click="showCreate=true" ng-model="showCreate">Add PO</button>
+</div>
+    <table class="table search-po">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>PO Number</th>
+            <th>Status</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tr ng-show="showCreate">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="text" ng-model="po.partnumber" placeholder="Part Number"/></td>
+        <td><input type="text" ng-model="po.description" placeholder="Description"/></td>
+        <td><input type="text" ng-model="po.qty" placeholder="Quantity"/></td>
+        <td ng-show="showCreate" ng-click="showCreate=false" ng-model="showCreate" class="btn btn-default">Cancel</td>
+        <td ng-click="createPo(po); showCreate=false; addPart(po)" class="btn btn-default" ng-model="showCreate">Submit</td>
+    </tr>
+    <tr ng-repeat="po in pogroup">
+        <td>{{$index + 1}}</td>
+        <td>{{po.poNumber}}</td>
+        <td>{{po.status}}<br><input ng-show="showEdit" type="text" ng-model="edit.status" placeholder="Edit Status"/></td>
+        <td>{{po.partNumber}}<br><input ng-show="showEdit" type="text" ng-model="edit.partNumber" placeholder="Edit Partnumber"/></td>
+        <td>{{po.description}}<br><input ng-show="showEdit" type="text" ng-model="edit.description" placeholder="Edit Description"/></td>
+        <td>{{po.quantity}}<br><input ng-show="showEdit" type="text" ng-model="edit.quantity" placeholder="Edit Quantity"/></td>
+        <td>{{po.createdAt}}<br><button ng-show="showEdit" ng-click="showEdit=false" ng-model="showEdit" class="btn btn-default">Cancel</button><button ng-model="showEdit" ng-show="showEdit" ng-click="editPo(edit, pogroup[$index]._id); showEdit=false" class="btn btn-default">Save</button></td>
+        <td class="btn btn-default" ng-click="showEdit=true" ng-model='showEdit'>Edit</td>
+        <td ng-if="loggeduser.authorization==='administrator' || loggeduser.authorization==='customer'" class="btn btn-default" ng-click="deletePo(pogroup[$index]._id)">Delete</td>
+    </tr>
+</table>
+<div>{{alert}}</div>
+
+    

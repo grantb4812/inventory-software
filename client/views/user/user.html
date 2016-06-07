@@ -1,0 +1,44 @@
+
+<div class="text-center search-po">
+    <input type="text" ng-model="search.firstname" placeholder="Firstname"/>
+    <input type="text" ng-model="search.lastname" placeholder="Lastname"/>
+    <button  ng-click="searchUser(search); showCreate=false" ng-model="showCreate">Search</button>
+    <button  ng-click="showCreate=true" ng-model="showCreate">Add User</button>
+</div>
+    <table class="table search-po">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Authorization</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tr ng-show="showCreate">
+        <td></td>
+        <td><input type="text" ng-model="user.username" placeholder="Create Username"/></td>
+        <td><input type="text" ng-model="user.firstname" placeholder="Firstname"/></td>
+        <td><input type="text" ng-model="user.lastname" placeholder="Lastname"/></td>
+        <td><input type="text" ng-model="user.authorization" placeholder="Authorization"/></td>
+        <td><input type="text" ng-model="user.password" placeholder="Password"/></td>
+        <td ng-show="showCreate" ng-click="showCreate=false" ng-model="showCreate" class="btn btn-default">Cancel</td>
+        <td ng-click="addUser(user, loggeduser._id); showCreate=false" class="btn btn-default" ng-model="showCreate">Submit</td>
+    </tr>
+    <tr ng-repeat="user in usergroup">
+        <td>{{$index + 1}}</td>
+        <td>{{user.username}}<br><input ng-show="showEdit" type="text" ng-model="edit.username" placeholder="Edit Username"/></td>
+        <td>{{user.firstname}}<br><input ng-show="showEdit" type="text" ng-model="edit.firstname" placeholder="Edit Firstname"/></td>
+        <td>{{user.lastname}}<br><input ng-show="showEdit" type="text" ng-model="edit.lastname" placeholder="Edit Lastname"/></td>
+        <td>{{user.authorization}}<br><input ng-show="showEdit" type="text" ng-model="edit.authorization" placeholder="Edit Authorization"/></td>
+        <td>{{user.password}}<br>
+            <input ng-show="showEdit" type="text" ng-model="edit.password" placeholder="Edit Password"/>
+            <button ng-show="showEdit" ng-click="showEdit=false" ng-model="showEdit" class="btn btn-default">Cancel</button><button ng-model="showEdit" ng-show="showEdit" ng-click="saveEdit(edit, usergroup[$index]._id); showEdit=false" class="btn btn-default">Save</button></td>
+        <td class="btn btn-default" ng-click="showEdit=true" ng-model='showEdit'>Edit</td>
+        <td class="btn btn-default" ng-click="deleteUser(usergroup[$index]._id)">Delete</td>
+    </tr>
+</table>
+<div>{{alert}}</div>
+
+        

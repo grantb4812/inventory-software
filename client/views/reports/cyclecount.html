@@ -1,0 +1,27 @@
+<div class='text-center reports'>
+    <div class="btn btn-default" ng-click='cyclecount()'>Create Cycle Count</div>
+</div>
+
+    <table class="table order">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Location</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    
+    <tr ng-repeat="part in part">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{part.location}}</td>
+        <td>{{part.partNumber}}</td>
+        <td>{{part.description}}</td>
+        <td>{{part.quantity}}</td>
+    </tr>
+    </div>

@@ -1,0 +1,33 @@
+<!-- Search specific PO#, enter qty received, generate new status 'received' or 'outstanding', 
+inventory 'available' in material management, qty, location, generate receipt id# -->
+
+<div class="text-center search-po">
+    <input type="text" ng-model="po.poNumber" placeholder="Search PO#"/>
+    <button ng-click="getPo(po); showCreate=false" ng-model="showCreate">Search</button>
+</div>
+    <table class="table search-po">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>PO Number</th>
+            <th>Status</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="po in pogroup">
+        <td>{{$index + 1}}</td>
+        <td>{{po.poNumber}}</td>
+        <td>{{po.status}}</td>
+        <td>{{po.partNumber}}</td>
+        <td>{{po.description}}<br><input ng-show="showEdit" type="text" ng-model="edit.location" placeholder="Location"/></td>
+        <td>{{po.quantity}}<br><input ng-show="showEdit" type="text" ng-model="edit.quantity" placeholder="Quantity Received"/></td>
+        <td>{{po.createdAt}}<br><button ng-show="showEdit" ng-click="showEdit=false" ng-model="showEdit" class="btn btn-default">Cancel</button><button ng-model="showEdit" ng-show="showEdit" ng-click="receivePo(edit, pogroup[$index]._id, po.partNumber, po.description, po.belongsTo); showEdit=false" class="btn btn-default">Save</button></td>
+        <td class="btn btn-default" ng-click="showEdit=true" ng-model='showEdit' ng-show='po.quantity>0'>Receive</td>
+    </tr>
+</table>
+<div>{{alert}}</div>
+
+    

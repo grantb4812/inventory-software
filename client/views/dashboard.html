@@ -1,0 +1,25 @@
+    <div class="fluid-container">
+        <div class="col-xs-2 dashboard-panel btn-group-vertical" ng-style="hgt">
+            <div class="user-name text-center">
+                <p>{{loggeduser.company}}</p>
+               <p>Welcome {{loggeduser.firstname}}</p> 
+            </div>
+            <div class="user-role text-center">
+                <p>{{loggeduser.authorization}}</p>
+            </div>
+            <div ng-if="loggeduser.authorization==='administrator'" ui-sref="dashboard.user" class="btn btn-default dash-btn" id="dash-btn-top">User Management</div>
+            <div ng-if="loggeduser.authorization==='administrator' || loggeduser.authorization==='buyer' || loggeduser.authorization==='customer'" ui-sref="dashboard.po" class="btn btn-default dash-btn">PO Management</div>
+            <div ng-if="loggeduser.authorization==='administrator' || loggeduser.authorization==='buyer' || loggeduser.authorization==='customer'" ui-sref="dashboard.order" class="btn btn-default dash-btn">Order Management</div>
+            <div ng-if="loggeduser.authorization==='administrator' || loggeduser.authorization==='receiver' || loggeduser.authorization==='shipper'" ui-sref="dashboard.receiving" class="btn btn-default dash-btn">Receiving</div>
+            <div ng-if="loggeduser.authorization==='administrator' || loggeduser.authorization==='receiver' || loggeduser.authorization==='shipper'" ui-sref="dashboard.shipping" class="btn btn-default dash-btn">Shipping</div>
+            <div ng-if="loggeduser.authorization==='administrator' || loggeduser.authorization==='receiver' || loggeduser.authorization==='shipper'" ui-sref="dashboard.material" class="btn btn-default dash-btn ">Material Management</div>
+            <div ng-if="loggeduser.authorization==='administrator' || loggeduser.authorization==='receiver' || loggeduser.authorization==='shipper' || loggeduser.authorization==='customer'" ui-sref="dashboard.reports" class="btn btn-default dash-btn ">Reports</div>
+            <button class="btn btn-default dash-btn" id="dash-btn-bot" ng-click="logout()" >Logout</button>
+        </div>
+        <div class="col-xs-10" ng-style="hgt" >
+           <ui-view></ui-view>
+        </div>
+    </div>
+
+
+

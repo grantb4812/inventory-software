@@ -1,0 +1,27 @@
+<div class='text-center reports'>
+    <div class="btn btn-default" ng-click='getPo()'>Receiving Report</div>
+</div>
+
+    <table class="table order">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Status</th>
+            <th>Location</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    
+    <tr ng-repeat="rec in pogroup">
+        <td></td>
+        <td></td>
+        <td>{{rec.status}}</td>
+        <td>{{rec.location}}</td>
+        <td>{{rec.partNumber}}</td>
+        <td>{{rec.description}}</td>
+        <td>{{rec.quantity}}</td>
+    </tr>
+    </div>

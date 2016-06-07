@@ -1,0 +1,56 @@
+
+<div class="text-center order">
+    <input type="text" ng-model="order.orderNumber" placeholder="Search Order#"/>
+    <button ng-click="getOrder(order); showNew=false" ng-model="showNew">Search</button>
+    <button ng-click="showNew=true; availableParts()" ng-model="showNew">Add Order</button>
+</div>
+    <table class="table order">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Order Number</th>
+            <th>Status</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Ship To</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tr ng-show="showNew">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="text" ng-model="order.partnumber" placeholder="Part Number"/></td>
+        <td><input type="text" ng-model="order.description" placeholder="Description"/></td>
+        <td><input type="text" ng-model="order.qty" placeholder="Quantity"/></td>
+        <td><input type="text" ng-model="order.ship" placeholder="Ship To"/></td>
+        <td ng-show="showNew" ng-click="showNew=false" ng-model="showNew" class="btn btn-default">Cancel</td>
+        <td ng-click="createOrder(order); showNew=false" class="btn btn-default" ng-model="showNew">Submit</td>
+    </tr>
+    <tr ng-show="showNew" ng-hide="part.quantity==0" ng-repeat="part in availablePart">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{part.partNumber}}</td>
+        <td>{{part.description}}</td>
+        <td>{{part.quantity}}</td>
+    </tr>
+    <tr ng-repeat="order in ordergroup">
+        <td>{{$index + 1}}</td>
+        <td>{{order.orderNumber}}</td>
+        <td>{{order.status}}<br><input ng-show="showOrder" type="text" ng-model="editO.status" placeholder="Edit Status"/></td>
+        <td>{{order.partNumber}}<br><input ng-show="showOrder" type="text" ng-model="editO.partNumber" placeholder="Edit Partnumber"/></td>
+        <td>{{order.description}}<br><input ng-show="showOrder" type="text" ng-model="editO.description" placeholder="Edit Description"/></td>
+        <td>{{order.quantity}}<br><input ng-show="showOrder" type="text" ng-model="editO.quantity" placeholder="Edit Quantity"/></td>
+        <td>{{order.shipTo}}<br>
+        <div ng-show="showTrack">Tracking# = {{order.tracking}}</div>
+        <input ng-show="showOrder" type="text" ng-model="editO.ship" placeholder="Edit Address"/></td>
+        <td>{{order.createdAt}}<br><button ng-show="showOrder" ng-click="showOrder=false" ng-model="showEdit" class="btn btn-default">Cancel</button><button ng-model="showOrder" ng-show="showOrder" ng-click="editOrder(editO, ordergroup[$index]._id); showOrder=false" class="btn btn-default">Save</button></td>
+        <td class="btn btn-default" ng-click="showOrder=true" ng-model='showOrder' ng-hide="{{order.status}}==shipped">Edit</td>
+        <td class="btn btn-default" ng-click="showTrack=true" ng-model='showTrack' ng-show="order.tracking">Track</td>
+        <td ng-show="showTrack" ng-click="showTrack=false" class="btn btn-default">Close</td>
+        <td ng-if="loggeduser.authorization==='administrator'" class="btn btn-default" ng-click="deleteOrder(ordergroup[$index]._id)">Delete</td>
+    </tr>
+</table>
+<div>{{alert}}</div>

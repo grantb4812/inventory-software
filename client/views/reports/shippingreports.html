@@ -1,0 +1,29 @@
+<div class='text-center reports'>
+    <div class='text-center reports'>
+    <div class="btn btn-default" ng-click='getOrder()'>Shipping Report</div>
+</div>
+
+    <table class="table order">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Order Number</th>
+            <th>Status</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    
+    <tr ng-repeat="rec in ordergroup">
+        <td></td>
+        <td>{{rec.orderNumber}}</td>
+        <td>{{rec.status}}</td>
+        <td>{{rec.partNumber}}</td>
+        <td>{{rec.description}}</td>
+        <td>{{rec.quantity}}</td>
+        <td>{{rec.shipTo}}</td>
+    </tr>
+    </div>
+</div>

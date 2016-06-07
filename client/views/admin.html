@@ -1,0 +1,16 @@
+<div ng-controller="formController">
+        <form no-validate>
+            partNumber:
+            <input name="partNumber" type="text" ng-model="part.partNumber"/>
+            description:
+            <input name="description" type="text" ng-model="part.description"/>
+            <input  type="submit" value="Submit" ng-click="addInventory()"/>
+        </form>
+        <button class="delete-button" ng-click="deleteInventory()">DELETE ALL</button>
+            <div>{{parts}}</div>
+        {{part.partNumber}}
+        {{part.description}}
+    </div>
+        <div ng-controller="logoutController">   
+            <button class="logout" ng-click="logout()">LOGOUT</button>
+        </div>

@@ -1,0 +1,10 @@
+<form>
+    <label>Enter Info Below:</label>
+        <input type="text" ng-model="user.company" placeholder="Company Name"/>
+        <input type="text" ng-model="user.username" placeholder="Create Username"/>
+        <input type="text" ng-model="user.firstname" placeholder="Firstname"/>
+        <input type="text" ng-model="user.lastname" placeholder="Lastname"/>
+        <input type="text" ng-model="user.password" placeholder="Password"/>
+        <div ng-click="addUser(user)" class="btn btn-default">Create Account</div>
+</form>
+{{alert}}

@@ -1,0 +1,26 @@
+<div class="container login-container vertical-container" ng-style="hgt">
+    <div class="row login-form text-center vertical-inner-container">
+        <form no-validate class="col-xs-12"> 
+        
+            <div class="form-group">
+                <label for="loginUsername">Username:</label>
+                <input class="form-control" id="login-username" type="text"  ng-model="user.username" placeholder="Username"/>
+            </div>
+        
+        
+            <div class="form-group">
+                <label for="loginPassword">Password:</label>
+                <input class="form-control" id="login-password" type="text"  ng-model="user.password" placeholder="Password"/>
+            </div>
+            
+        
+            
+                <button type="submit" name="submit" ng-click="login(user)" class="btn btn-default">Login</button>
+                <button ui-sref="register" type="submit" name='register' class="btn btn-default">New Customer</button>
+        
+        </form>
+        <div>{{alert}}</div>
+    </div>
+</div>
+        
+    

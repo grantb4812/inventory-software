@@ -1,0 +1,30 @@
+<div class="text-center search-po">
+    <input type="text" ng-model="part.partNumber" placeholder="Search Part#"/>
+    <button ng-click="getPart(part); showCreate=false" ng-model="showCreate">Search</button>
+</div>
+    <table class="table search-po">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Part#</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Quantity</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="part in materialgroup">
+        <td>{{$index + 1}}</td>
+        <td>{{part.partNumber}}</td>
+        <td>{{part.description}}</td>
+        <td>{{part.status}}<br><input ng-show="showEdit" type="text" ng-model="change.status" placeholder="Change Status"/></td>
+        <td>{{part.quantity}}</td>
+        <td>{{part.location}}<br><input ng-show="showEdit" type="text" ng-model="change.location" placeholder="Change Location"/></td>
+        <td><button ng-show="showEdit" ng-click="showEdit=false" ng-model="showEdit" class="btn btn-default">Cancel</button><button ng-model="showEdit" ng-show="showEdit" ng-click="changePart(change, materialgroup[$index]._id); showEdit=false" class="btn btn-default">Save</button></td>
+        <td class="btn btn-default" ng-click="showEdit=true" ng-model='showEdit'>Change</td>
+        <td ng-if="loggeduser.authorization==='administrator'" class="btn btn-default" ng-click="removePart(materialgroup[$index]._id)">Remove</td>
+    </tr>
+</table>
+<div>{{alert}}</div>
+
+    
