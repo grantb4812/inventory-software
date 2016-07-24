@@ -62,7 +62,7 @@ module.exports = function(app) {
  
  
     app.post('/login', passport.authenticate('local'), function(req, res){
-        res.json(req.user);
+        res.send("Successful login");
     });
  
  
