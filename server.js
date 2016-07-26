@@ -4,7 +4,11 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-mongoose.connect("mongodb://127.0.0.1:27017/inventoryDB");
+var mongodbURI = "mongodb://mainuser:mainuser@ds045684.mlab.com:45684/inventorydata";
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
+
+mongoose.connect(mongodbURI, options);
 
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({extended: false});
