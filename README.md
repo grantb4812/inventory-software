@@ -24,12 +24,3 @@ Users
                 - removes from inventory
         
 
-Before we meet again, I would like for you to finish:
-1. CRUD usability for different users [Admin, buyer, shipper, receiver] [ADMIN needs full CRUD] [buyer/shipper/receiver, might need edit capabilities]
-2. Completing the features you have currently started
-
-After that we will meet again briefly to go over your project, and talk about next steps through LaunchCode.
-
-Extra things to work on after those 2 things work on:
-1. Create a way for users to sign up [buyers], and manage their access to information
-2. Create a Reports tab that allows Users to view information in different ways, specific to their needs and their data
