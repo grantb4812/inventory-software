@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var mongodbURI = "mongodb://mainuser:mainuser@ds045684.mlab.com:45684/inventorydata";
+var mongodbURI = "mongodb://mainuser:mainuser@ds139645.mlab.com:39645/inventory-software";
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
