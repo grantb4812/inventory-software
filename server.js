@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 var app = express();
-
-var mongodbURI = "mongodb://mainuser:mainuser@ds139645.mlab.com:39645/inventory-software";
+var mongodbURI = "mongodb://localhost/inventoryDB";
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
