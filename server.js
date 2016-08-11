@@ -8,7 +8,9 @@ var app = express();
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
-mongoose.connect(process.env.MONGO_URI, options);
+mongoose.connect(process.env.MONGO_URI, options, function(error) {
+    if (error) console.error(error);
+});
 
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({extended: false});
