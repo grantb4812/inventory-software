@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-require('dotenv').config();
+require('dotenv').load();
 
 var app = express();
 
