@@ -1,13 +1,14 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+require('dotenv').config();
 
 var app = express();
 
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
-mongoose.connect(MONGO_URI, options);
+mongoose.connect(process.env.MONGO_URI, options);
 
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({extended: false});
