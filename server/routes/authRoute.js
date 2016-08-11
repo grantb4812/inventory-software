@@ -39,6 +39,7 @@ module.exports = function(app) {
                 if (user.password != password) {
                     return done(null, false, {alert: 'Incorrect password.'});
                 }
+                console.log(user);
                 return done(null, user);
             });
         }

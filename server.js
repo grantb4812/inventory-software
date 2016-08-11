@@ -3,11 +3,11 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 var app = express();
-var mongodbURI = "mongodb://localhost/inventoryDB";
+
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
-mongoose.connect(mongodbURI, options);
+mongoose.connect(MONGO_URI, options);
 
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({extended: false});
