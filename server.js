@@ -1,9 +1,12 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-require('dotenv').load();
+
+
 
 var app = express();
+require('dotenv').load();
+require('./server/routes/authRoute.js')(app);
 
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
@@ -26,7 +29,7 @@ app.get('/',  function(req, res) {
 
 });
 
-require('./server/routes/authRoute.js')(app);
+
 require('./server/routes/partRoute.js')(app);
 require('./server/routes/userRoute.js')(app);
 require('./server/routes/poRoute.js')(app);
