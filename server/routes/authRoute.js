@@ -10,10 +10,11 @@ module.exports = function(app) {
  
     var session = require('express-session');
     var MongoStore = require('connect-mongo')(session);
+    
  
     app.use(session({
         store: new MongoStore({
-            url: 'mongodb://localhost/test'
+            url: process.env.MONGO_URI
          }),
         secret: 'secret',
         resave:true,
