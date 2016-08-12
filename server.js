@@ -11,7 +11,7 @@ require('./server/routes/authRoute.js')(app);
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
-mongoose.connect('mongodb://heroku_vf5svrcx:keh4v08b9ft6f1a8qoql37ug1a@ds153765.mlab.com:53765/heroku_vf5svrcxheroku', options, function(error) {
+mongoose.connect(process.env.MONGO_URI, options, function(error) {
     if (error) console.error(error);
 });
 
