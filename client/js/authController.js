@@ -11,7 +11,7 @@ myApp.controller('authController', function($scope, $http, $state) {
                $state.go('login'); 
             });
         };
-        $scope.userinfo();
+        //$scope.userinfo();
         
         $scope.login = function(user) {
           $http.post('/login', user)

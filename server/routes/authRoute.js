@@ -10,11 +10,10 @@ module.exports = function(app) {
  
     var session = require('express-session');
     var MongoStore = require('connect-mongo')(session);
-    
  
     app.use(session({
         store: new MongoStore({
-            url: process.env.MONGO_URI
+            url: 'mongodb://localhost/inventoryDB' // process.env.MONGO_URI
          }),
         secret: 'secret',
         resave:true,
@@ -64,6 +63,7 @@ module.exports = function(app) {
  
  
     app.post('/login', passport.authenticate('local'), function(req, res){
+        console.log('getting here');
         res.send("Successful login");
     });
  
