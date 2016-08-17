@@ -7,9 +7,9 @@ module.exports = function(app) {
     
     
    app.post('/createUser',function(req,res){
-       console.log(req.body._id);
+       
       if (req.body._id) {
-        User.findOne({_id: req.body._id}, function(err, user) {
+        User.findOne({_id: req.session.passport.user}, function(err, user) {
             if (err) console.error(err);
             console.log(user);
             if (user.authorization == 'administrator') {

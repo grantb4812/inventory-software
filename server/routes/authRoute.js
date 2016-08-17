@@ -13,7 +13,7 @@ module.exports = function(app) {
  
     app.use(session({
         store: new MongoStore({
-            url: 'mongodb://localhost/inventoryDB' // process.env.MONGO_URI
+            url: process.env.MONGO_URI  //'mongodb://localhost/inventoryDB' // 
          }),
         secret: 'secret',
         resave:true,
